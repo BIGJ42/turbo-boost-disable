@@ -9,7 +9,7 @@ If you're using an Apple Silicon based Mac, you are free from overheating by des
 Additionally, the kext shown here will only work on Intel-based Macs.
 
 ## Why?
-My 2012 Intel MacBook Pro runs hot most of the time. 
+My 2012 Intel MacBook Pro can get quite hot. 
 It's well known that integrated circuits last longer if they are not stressed out as much during their life.
 That means (relatively) cool operation most of the time. 
 Typing on a warm keyboard is also a deeply unpleasent experience.

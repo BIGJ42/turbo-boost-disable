@@ -1,20 +1,15 @@
 # turbo-boost-disable
+This is a fork of edupr91's repo for this with updated and easier instructions.
 
 ## Disclaimer
-
-**This project is END-OF-LIFE.**
-This issue does not affect Apple Silicon Macs: as I no longer own an Intel Mac, I cannot guarantee the project works.
-If you would like continue development, please fork.
-
 This tool is **only a shell wrapper abusing system privilages** to wrap [Turbo Boost Switcher (TBS)](https://github.com/rugarciap/Turbo-Boost-Switcher) functionality behind the command line. 
-You're probably better off using TBS to be honest.
 
 This issue only affects Intel Macs.
 If you're using an Apple Silicon based Mac, you are free from overheating by design!
 Additionally, the kext shown here will only work on Intel-based Macs.
 
 ## Why?
-My 2018 Intel MacBook Pro runs hot most of the time. 
+My 2012 Intel MacBook Pro runs hot most of the time. 
 It's well known that integrated circuits last longer if they are not stressed out as much during their life.
 That means (relatively) cool operation most of the time. 
 Typing on a warm keyboard is also a deeply unpleasent experience.
@@ -39,22 +34,20 @@ The primary `git` branch is `main`.
 Make sure you are working off this correct branch.
 
 ## 1. Setup (Required)
+1. Install [Turbo Boost Switcher](https://github.com/rugarciap/Turbo-Boost-Switcher)
+2. Download this repo and place the folder in your home folder (`~/turbo-boost-disable`).
+3. We need to run `load.sh` and `unload.sh` as root.
+   Therefore, modify your `/etc/sudoers` file to not require a password for these scripts.
+   Edit the sudoers file:
+  ```sh
+  $ sudo visudo /etc/sudoers
+  ```
 
-Download the directory and place in your home folder (`~/turbo-boost-disable`).
-
-We need to run `load.sh` and `unload.sh` as root.
-Therefore, modify your `/etc/sudoers` file to not require a password for these scripts.
-
-Edit the sudoers file:
-```sh
-$ sudo visudo /etc/sudoers
-```
-
-Append these lines to `/etc/sudoers`, replacing `myusername` with your login username (use `whoami` to find this out):
-```
-myusername ALL=(root) NOPASSWD: /Users/myusername/turbo-boost-disable/load.sh
-myusername ALL=(root) NOPASSWD: /Users/myusername/turbo-boost-disable/unload.sh
-```
+  Append these lines to `/etc/sudoers`, replacing `myusername` with your login username (use `whoami` to find this out):
+  ```
+  myusername ALL=(root) NOPASSWD: /Users/myusername/turbo-boost-disable/load.sh
+  myusername ALL=(root) NOPASSWD: /Users/myusername/turbo-boost-disable/unload.sh
+  ```
 
 Ensure that `load.sh`, `unload.sh`, `start.sh` are only readable and executable, not writable (for security purposes).
 They should also be owned by root (with `setuid`), so only `root` can alter these permissions.
